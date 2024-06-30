@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pb";
+
+service AuthService{
+    rpc SignUp(AuthRequest) returns (AuthResponse);
+    rpc Login(AuthRequest) returns (AuthResponse);
+}
+
+message AuthRequest{
+    string username = 1;
+    string password = 2;
+}
+
+message AuthResponse{
+    string message = 1;
+    string access_token = 2;
+}
+
+service BlogService{
+    rpc Get(GetBlog) returns (BlogResponses);
+    rpc Create(CreateBlog) returns (BlogResponse);
+    rpc Update(UpdateBlog) returns (BlogResponse);
+    rpc Delete(DeleteBlog) returns (BlogResponse);
+}
+
+message GetBlog{
+    optional string name = 1;
+}
+
+message Blog{
+    string name = 1;
+    string description = 2;
+}
+
+message CreateBlog{
+    Blog blog = 1;
+}
+
+message UpdateBlog{
+    Blog blog = 1;
+}
+
+message DeleteBlog{
+    string name = 1;
+}
+
+message BlogResponse{
+    Blog blog = 1;
+}
+
+message BlogResponses{
+    repeated Blog blog = 1;
+}
