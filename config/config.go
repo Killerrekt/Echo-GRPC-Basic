@@ -3,6 +3,7 @@ package config
 import "github.com/spf13/viper"
 
 type Config struct {
+	Port             string `mapstructure:"port"`
 	PostgresPort     string `mapstructure:"postgres_port"`
 	PostgresHost     string `mapstructure:"postgres_host"`
 	PostgresUser     string `mapstructure:"postgres_user"`

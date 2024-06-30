@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var db *gorm.DB
+var DB *gorm.DB
 
 func DBInit(config config.Config) (err error) {
 	dsn := fmt.Sprintf(
@@ -21,7 +21,7 @@ func DBInit(config config.Config) (err error) {
 		config.PostgresPort,
 	)
 
-	db, err = gorm.Open(postgres.Open(dsn))
+	DB, err = gorm.Open(postgres.Open(dsn))
 	if err != nil {
 		return
 	}
