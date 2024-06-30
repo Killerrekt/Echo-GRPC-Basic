@@ -1,0 +1,21 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    container_name: grpc-demo
+    ports:
+      - "5432:5432" #just added this for convience of testing
+    volumes:
+      - progresDB:/data/postgres
+    env_file:
+      - .env
+  api:
+    build: .
+    ports:
+      - "8080"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+volumes:
+  progresDB:
